@@ -1,4 +1,7 @@
 var pantalla = 0;
+var valor1 = 0;
+var valor2 = 0;
+
 function actualizarDisplay(){
   document.getElementById("display").innerHTML=pantalla;
 }
@@ -16,6 +19,9 @@ function teclaPresionada($tecla){
     pantalla = "";
   }
 
+function limpiarDisplay(){
+
+}
 
   if (isNaN($tecla)){
     switch ($tecla) {
