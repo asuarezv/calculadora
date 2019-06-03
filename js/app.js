@@ -1,22 +1,179 @@
-function presionarBotonOn()       {document.getElementById('on').style="padding: 1px 1px;";}
-function presionarBotonSign()     {document.getElementById('sign').style="padding: 1px 1px;";}
-function presionarBotonRaiz()     {document.getElementById('raiz').style="padding: 1px 1px;";}
-function presionarBotonDividido() {document.getElementById('dividido').style="padding: 1px 1px;";}
-function presionarBoton7()        {document.getElementById('7').style="padding: 1px 1px;";}
-function presionarBoton8()        {document.getElementById('8').style="padding: 1px 1px;";}
-function presionarBoton9()        {document.getElementById('9').style="padding: 1px 1px;";}
-function presionarBotonPor()      {document.getElementById('por').style="padding: 1px 1px;";}
-function presionarBoton4()        {document.getElementById('4').style="padding: 1px 1px;";}
-function presionarBoton5()        {document.getElementById('5').style="padding: 1px 1px;";}
-function presionarBoton6()        {document.getElementById('6').style="padding: 1px 1px;";}
-function presionarBotonMenos()    {document.getElementById('menos').style="padding: 1px 1px;";}
-function presionarBoton1()        {document.getElementById('1').style="padding: 1px 1px;";}
-function presionarBoton2()        {document.getElementById('2').style="padding: 1px 1px;";}
-function presionarBoton3()        {document.getElementById('3').style="padding: 1px 1px;";}
-function presionarBoton0()        {document.getElementById('0').style="padding: 1px 1px;";}
-function presionarBotonPunto()    {document.getElementById('punto').style="padding: 1px 1px;";}
-function presionarBotonIgual()    {document.getElementById('igual').style="padding: 1px 1px;";}
-function presionarBotonMas()      {document.getElementById('mas').style="padding: 1px 1px 0px 0px;";}
+var pantalla = 0;
+function actualizarDisplay(){
+  document.getElementById("display").innerHTML=pantalla;
+}
+
+function maximoLargo(){
+  if (pantalla.length==8){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function teclaPresionada($tecla){
+  if (pantalla == "0") {
+    pantalla = "";
+  }
+
+
+  if (isNaN($tecla)){
+    switch ($tecla) {
+      case 'on':
+        pantalla=0;
+        actualizarDisplay();
+        break;
+      case "sign":
+
+        if (!pantalla=="0"){
+          cuenta = 0;
+          posicion = pantalla.indexOf("-");
+          while ( posicion != -1 ) {
+             cuenta++;
+             posicion = pantalla.indexOf("-",posicion+1);
+          }
+          if (cuenta==0){
+            if (!pantalla==0){
+              pantalla = "-" + pantalla;
+              actualizarDisplay()
+            } else {
+
+            }
+          } else {
+            pantalla = pantalla.substr(1);
+            actualizarDisplay()
+          }
+        }
+        break;
+      case "raiz":
+
+        break;
+      case "dividido":
+
+        break;
+      case "por":
+
+        break;
+      case "menos":
+
+
+
+        break;
+      case "igual":
+
+        break;
+      case "mas":
+
+        break;
+      case ".":
+        if (!maximoLargo()){
+
+          cuenta = 0;
+          posicion = pantalla.indexOf(".");
+          while ( posicion != -1 ) {
+             cuenta++;
+             posicion = pantalla.indexOf(".",posicion+1);
+          }
+
+          if (cuenta==0){
+            if (pantalla==0){
+              pantalla = pantalla + "0" +$tecla;
+              actualizarDisplay()
+            } else {
+              pantalla = pantalla + $tecla;
+              actualizarDisplay()
+            }
+          }
+
+        }
+        break;
+      default:
+        break;
+    }
+  } else {
+    if (!maximoLargo()){
+      pantalla = pantalla + $tecla;
+      actualizarDisplay()
+    }
+  }
+}
+
+function presionarBotonOn(){
+  document.getElementById('on').style="padding: 1px 1px;";
+  teclaPresionada("on");
+}
+function presionarBotonSign(){
+  document.getElementById('sign').style="padding: 1px 1px;";
+  teclaPresionada("sign");
+}
+function presionarBotonRaiz(){
+  document.getElementById('raiz').style="padding: 1px 1px;";
+  teclaPresionada("raiz");
+}
+function presionarBotonDividido(){
+  document.getElementById('dividido').style="padding: 1px 1px;";
+  teclaPresionada("/");
+}
+function presionarBoton7(){
+  document.getElementById('7').style="padding: 1px 1px;";
+  teclaPresionada(7);
+}
+function presionarBoton8(){
+  document.getElementById('8').style="padding: 1px 1px;";
+  teclaPresionada(8);
+}
+function presionarBoton9(){
+  document.getElementById('9').style="padding: 1px 1px;";
+  teclaPresionada(9);
+}
+function presionarBotonPor(){
+  document.getElementById('por').style="padding: 1px 1px;";
+  teclaPresionada("X");
+}
+function presionarBoton4(){
+  document.getElementById('4').style="padding: 1px 1px;";
+  teclaPresionada(4);
+}
+function presionarBoton5(){
+  document.getElementById('5').style="padding: 1px 1px;";
+  teclaPresionada(5);
+}
+function presionarBoton6(){
+  document.getElementById('6').style="padding: 1px 1px;";
+  teclaPresionada(6);
+}
+function presionarBotonMenos(){
+  document.getElementById('menos').style="padding: 1px 1px;";
+  teclaPresionada("-");
+}
+function presionarBoton1(){
+  document.getElementById('1').style="padding: 1px 1px;";
+  teclaPresionada(1);
+}
+function presionarBoton2(){
+  document.getElementById('2').style="padding: 1px 1px;";
+  teclaPresionada(2);
+}
+function presionarBoton3(){
+  document.getElementById('3').style="padding: 1px 1px;";
+  teclaPresionada(3);
+}
+function presionarBoton0(){
+  document.getElementById('0').style="padding: 1px 1px;";
+  teclaPresionada(0);
+}
+function presionarBotonPunto(){
+  document.getElementById('punto').style="padding: 1px 1px;";
+  teclaPresionada(".");
+}
+function presionarBotonIgual(){
+  document.getElementById('igual').style="padding: 1px 1px;";
+  teclaPresionada("=");
+}
+function presionarBotonMas(){
+  document.getElementById('mas').style="padding: 1px 1px 0px 0px;";
+  teclaPresionada("+");
+}
 
 function liberarBotonOn()         {document.getElementById('on').style="padding: 0px 0px;";}
 function liberarBotonSign()       {document.getElementById('sign').style="padding: 0px 0px;";}
